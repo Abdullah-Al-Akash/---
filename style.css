@@ -1,3 +1,11 @@
 .form-bg {
         background: orangered;
 }
+
+.deposit {
+        background: lightgreen;
+}
+
+.withdraw {
+        background: lightsalmon;
+}
