@@ -1,3 +1,24 @@
+//disbale deposit button:
+document.getElementById('deposit-input').addEventListener('keyup', function (e) {
+        if ((e.target.value).length > 0) {
+                document.getElementById('deposit-btn').removeAttribute('disabled');
+        }
+        else {
+                document.getElementById('deposit-btn').setAttribute('disabled', true);
+        }
+
+})
+//disbale deposit button:
+document.getElementById('deposit-input').addEventListener('change', function (e) {
+        if ((e.target.value).length > 0) {
+                document.getElementById('deposit-btn').removeAttribute('disabled');
+        }
+        else {
+                document.getElementById('deposit-btn').setAttribute('disabled', true);
+        }
+
+})
+
 //deposit cash
 document.getElementById('deposit-btn').addEventListener('click', function () {
 
@@ -10,10 +31,7 @@ document.getElementById('deposit-btn').addEventListener('click', function () {
         const currentDepositAmount = parseFloat(currentDeposit.innerText);
 
         //Validations:
-
-
         const newDepositAmount = depositAmount + currentDepositAmount;
-        console.log(typeof newDepositAmount)
 
         //Current Amount:
         currentDeposit.innerText = newDepositAmount;
@@ -27,6 +45,28 @@ document.getElementById('deposit-btn').addEventListener('click', function () {
 
         //Equation
         storeAmountText.innerText = storeAmount + depositAmount;
+        document.getElementById('deposit-btn').setAttribute('disabled', true);
+})
+
+//withdraw deposit button:
+document.getElementById('withdraw-input').addEventListener('keyup', function (e) {
+        if ((e.target.value).length > 0) {
+                document.getElementById('withdraw-btn').removeAttribute('disabled');
+        }
+        else {
+                document.getElementById('withdraw-btn').setAttribute('disabled', true);
+        }
+
+})
+//withdraw deposit button:
+document.getElementById('withdraw-input').addEventListener('change', function (e) {
+        if ((e.target.value).length > 0) {
+                document.getElementById('withdraw-btn').removeAttribute('disabled');
+        }
+        else {
+                document.getElementById('withdraw-btn').setAttribute('disabled', true);
+        }
+
 })
 
 //Withdraw Cash:
@@ -49,4 +89,10 @@ document.getElementById('withdraw-btn').addEventListener('click', function () {
 
         //Equation
         storeAmountText.innerText = storeAmount - currentWithdrawAmount;
+        document.getElementById('withdraw-btn').setAttribute('disabled', true);
+})
+
+//Added Logout Button
+document.getElementById('logout-btn').addEventListener('click', function () {
+        window.location.href = 'index.html';
 })

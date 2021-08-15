@@ -19,6 +19,8 @@
                 <div class="text-center mt-5">
                         <h1 class="fw-bold text-success">বাপের ব্যাংক</h1>
                         <h2 class="fw-bolder text-danger">থেকে খরচ করো</h2>
+                        <button id="logout-btn" class="btn btn-danger fw-bold mt-2" type="button">লগ আউট</button>
+
                 </div>
         </header>
         <main>
@@ -57,21 +59,22 @@
                                         <div class="col-lg-4 mt-3">
                                                 <div class="p-3 border mx-auto deposit p-4 rounded-3">
                                                         <h4>ডিপোজিট করে ফেলো</h4>
-                                                        <input type="" class="form-control w-75 mt-2" id="deposit-input"
+                                                        <input type="number" class="form-control w-75 mt-2"
+                                                                id="deposit-input"
                                                                 placeholder="$ তুমার ইচ্ছে মতো যোগ করো">
                                                         <button id="deposit-btn" class="btn btn-success fw-bold mt-2"
-                                                                type="button">Deposit</button>
+                                                                type="button" disabled>Deposit</button>
                                                 </div>
 
                                         </div>
                                         <div class="col-lg-4 mt-3">
                                                 <div class="p-3 border mx-auto withdraw p-4 rounded-3">
                                                         <h4>খরচ করে ফেলো</h4>
-                                                        <input type="" class="form-control w-75 mt-2"
+                                                        <input type="number" class="form-control w-75 mt-2"
                                                                 id="withdraw-input"
                                                                 placeholder="$ তুমার ইচ্ছে মতো খরচ করো">
                                                         <button id="withdraw-btn" class="btn btn-danger fw-bold mt-2"
-                                                                type="button">Withdraw</button>
+                                                                type="button" disabled="disabled">Withdraw</button>
                                                 </div>
 
                                         </div>
