@@ -18,33 +18,62 @@ document.getElementById('deposit-input').addEventListener('change', function (e)
         }
 
 })
+/* 
+        Validation Complete
+*/
+
+/* -----------------------------------
+        DRY Method: Common Function
+-------------------------------------*/
+function getInputValue(inputId) {
+        //get Deposit input amount
+        const inputField = document.getElementById(inputId);
+        const totalAmount = parseFloat(inputField.value);
+
+        //clear deposit input field
+        inputField.value = '';
+        return totalAmount;
+}
+
+function currentAmountUpdate(currentAmountId, depositAmount) {
+        const currentAmount = document.getElementById(currentAmountId);
+        const currentAmountNumber = parseFloat(currentAmount.innerText);
+
+        //Validations:
+        const updateAmount = depositAmount + currentAmountNumber;
+        currentAmount.innerText = updateAmount;
+        return updateAmount;
+}
+
+function previousAmount() {
+        const storeAmountText = document.getElementById('store-amount');
+        const storeAmount = parseFloat(storeAmountText.innerText);
+        return storeAmount;
+}
+
+function updateAmount(amount, isAdd) {
+        const storeAmountText = document.getElementById('store-amount');
+        //Equation
+        const storeAmount = previousAmount();
+        if (isAdd == true) {
+                storeAmountText.innerText = storeAmount + amount;
+        }
+        else {
+                storeAmountText.innerText = storeAmount - amount;
+        }
+}
 
 //deposit cash
 document.getElementById('deposit-btn').addEventListener('click', function () {
+        //Common Function
+        const depositAmount = getInputValue('deposit-input');
 
-        //get Deposit input amount
-        const depositInput = document.getElementById('deposit-input');
-        const depositAmount = parseFloat(depositInput.value);
+        //Common Function
+        if (depositAmount > 0) {
+                currentAmountUpdate('total-deposit', depositAmount);
+                updateAmount(depositAmount, true);
+        }
 
-        //Added Amount in Total Deposit
-        const currentDeposit = document.getElementById('total-deposit');
-        const currentDepositAmount = parseFloat(currentDeposit.innerText);
-
-        //Validations:
-        const newDepositAmount = depositAmount + currentDepositAmount;
-
-        //Current Amount:
-        currentDeposit.innerText = newDepositAmount;
-
-        //clear deposit input field
-        depositInput.value = '';
-
-        //Store Amount update:
-        const storeAmountText = document.getElementById('store-amount');
-        const storeAmount = parseFloat(storeAmountText.innerText);
-
-        //Equation
-        storeAmountText.innerText = storeAmount + depositAmount;
         document.getElementById('deposit-btn').setAttribute('disabled', true);
 })
 
@@ -68,27 +97,22 @@ document.getElementById('withdraw-input').addEventListener('change', function (e
         }
 
 })
+/* 
+        Validation Complete
+*/
 
 //Withdraw Cash:
 document.getElementById('withdraw-btn').addEventListener('click', function () {
-        const currentWithdrawText = document.getElementById('withdraw-input')
-        const currentWithdrawAmount = parseFloat(currentWithdrawText.value);
+        //Common Function
+        const currentWithdrawAmount = getInputValue('withdraw-input');
 
-        const totalWithdrawText = document.getElementById('withdraw-total');
-        const totalWithdrawAmount = parseFloat(totalWithdrawText.innerText);
-
-        //Update Withdraw Amount:
-        totalWithdrawText.innerText = currentWithdrawAmount + totalWithdrawAmount;
-
-        //Clear Input Field:
-        currentWithdrawText.value = '';
-
-        //Store Amount update:
-        const storeAmountText = document.getElementById('store-amount');
-        const storeAmount = parseFloat(storeAmountText.innerText);
-
-        //Equation
-        storeAmountText.innerText = storeAmount - currentWithdrawAmount;
+        //Common Function
+        const currentBalance = previousAmount();
+        if (currentWithdrawAmount > 0 && currentWithdrawAmount < currentBalance) {
+                currentAmountUpdate('withdraw-total', currentWithdrawAmount);
+                //Equation
+                updateAmount(currentWithdrawAmount, false);
+        }
         document.getElementById('withdraw-btn').setAttribute('disabled', true);
 })
 
