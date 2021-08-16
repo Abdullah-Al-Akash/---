@@ -82,7 +82,7 @@ document.getElementById('deposit-btn').addEventListener('click', function () {
 
 //withdraw deposit button:
 document.getElementById('withdraw-input').addEventListener('keyup', function (e) {
-        if ((e.target.value).length > 0) {
+        if ((e.target.value) > 0) {
                 document.getElementById('withdraw-btn').removeAttribute('disabled');
         }
         else {
@@ -92,7 +92,7 @@ document.getElementById('withdraw-input').addEventListener('keyup', function (e)
 })
 //withdraw deposit button:
 document.getElementById('withdraw-input').addEventListener('change', function (e) {
-        if ((e.target.value).length > 0) {
+        if ((e.target.value) > 0) {
                 document.getElementById('withdraw-btn').removeAttribute('disabled');
         }
         else {
