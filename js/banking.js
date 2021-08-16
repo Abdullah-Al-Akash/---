@@ -1,6 +1,6 @@
 //disbale deposit button:
 document.getElementById('deposit-input').addEventListener('keyup', function (e) {
-        if ((e.target.value).length > 0) {
+        if ((e.target.value) > 0) {
                 document.getElementById('deposit-btn').removeAttribute('disabled');
         }
         else {
@@ -10,7 +10,7 @@ document.getElementById('deposit-input').addEventListener('keyup', function (e) 
 })
 //disbale deposit button:
 document.getElementById('deposit-input').addEventListener('change', function (e) {
-        if ((e.target.value).length > 0) {
+        if ((e.target.value) > 0) {
                 document.getElementById('deposit-btn').removeAttribute('disabled');
         }
         else {
@@ -62,6 +62,9 @@ function updateAmount(amount, isAdd) {
                 storeAmountText.innerText = storeAmount - amount;
         }
 }
+/* 
+        Common Function End
+*/
 
 //deposit cash
 document.getElementById('deposit-btn').addEventListener('click', function () {
